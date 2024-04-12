@@ -75,15 +75,7 @@ Puedes ver la informacion de estos archivos mirando el diccionario de datos toca
 
 Estos archivos son descomprimidos, limpiados, transformados, y exportados en formato parquet.
 
-#### 🔄 **TRASNFORM - TRANSFORMAR**
-
-    🔄 Preparamos los dataset de Steam para la correcta lectura.
-
-    🗑️ ✅ Eliminados columnas irrelevantes para optimizar el rendimiento de la API.
-
-    🗑️ ✅ Eliminados datos faltantes o nulos
-
-    🗑️ ✅ Eliminados registros o filas repetidas
+#### 🔄 **TRANsFORM** 
 
 #### **🔌 Las columnas que vamos a requerir para nuestras funciones son:**
 
@@ -107,6 +99,14 @@ Estos archivos son descomprimidos, limpiados, transformados, y exportados en for
    - **📂 steam_games.json**: developer, release_date, price.
    - **📂 user_reviews.json**: item_id, sentiment_analysis
 
+**🔄 Preparamos los dataset de Steam para la correcta lectura.**
+
+    🗑️ ✅ Eliminados columnas irrelevantes para optimizar el rendimiento de la API.
+
+    🗑️ ✅ Eliminados datos faltantes o nulos
+
+    🗑️ ✅ Eliminados registros o filas repetidas
+
 📂 1_ **steam_games.json**:
 
 - `release_date`:
@@ -120,7 +120,7 @@ Estos archivos son descomprimidos, limpiados, transformados, y exportados en for
 
 📂 2_ **users_items.json**:
 
-- 🗃️ `Items `**:** Desanidado: era una lista de diccionarios
+- 🗃️ `Items `**:** Desanidado: eran una lista de diccionarios
 - 🔄 `Playtime_forever `: Transformamos los minutos a horas
 
 📂 3_ **user_reviews.json:**
