@@ -1,28 +1,31 @@
 # Funciones utiles para ETL Y EDA
 import pandas as pd
 import datetime
+import inspect
 
 
 def data_type_check(df):
     # Create a dictionary to store the data summary
-    data_types = {"columna": [], "%_no_nulos": [], "%_nulos": [], "total_nulos": [], "tipo_dato": []}
+    dataframe = {"columna": [], "%_no_nulos": [], "%_nulos": [], "total_nulos": [], "tipo_dato": []}
+    # Conseguir el nombre del df
+    nombre_df = [nombre for nombre, var in inspect.currentframe().f_back.f_locals.items() if var is df][0]
     # Header
     print("\n" + "=" * 40)
-    print(" Resumen del Dataframe ")
-    print("=" * 40)
+    print(f" Resumen del dataframe '{nombre_df}': ")
+    print("\n" + "=" * 40)
     for columna in df.columns:
-        # Calculate the percentage of non-null values
+        # Calcular el porcentaje de no nulos
         porcentaje_no_nulos = (df[columna].count() / len(df)) * 100
-        # Obtain the data type directly
+        # Obtener el tipo de dato directamente
         tipo_dato = df[columna].dtype  
-        # Append information to the dictionary
-        data_types["columna"].append(columna)
-        data_types["%_no_nulos"].append(round(porcentaje_no_nulos, 2))
-        data_types["%_nulos"].append(round(100 - porcentaje_no_nulos, 2))
-        data_types["total_nulos"].append(df[columna].isnull().sum())
-        data_types["tipo_dato"].append(tipo_dato)
-    # Create the DataFrame
-    df_info = pd.DataFrame(data_types)
+        # Append la informacion a un diccionario
+        dataframe["columna"].append(columna)
+        dataframe["%_no_nulos"].append(round(porcentaje_no_nulos, 2))
+        dataframe["%_nulos"].append(round(100 - porcentaje_no_nulos, 2))
+        dataframe["total_nulos"].append(df[columna].isnull().sum())
+        dataframe["tipo_dato"].append(tipo_dato)
+    # Creamos el dataframe
+    df_info = pd.DataFrame(dataframe)
     print("Dimensiones: ", df.shape)
     print(df_info)    
 
