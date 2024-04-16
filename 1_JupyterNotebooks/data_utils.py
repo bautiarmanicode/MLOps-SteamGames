@@ -2,6 +2,7 @@
 import pandas as pd
 import datetime
 import inspect
+import re
 
 
 def data_type_check(df):
@@ -72,9 +73,24 @@ def duplicados_columna(df, columna):
     return duplicated_rows_sorted
 
 
-def extraccion_fecha(cadena_fecha):    
-    try:
-        fecha_dt = datetime.datetime.strptime(cadena_fecha, '%B %d, %Y')
-        return fecha_dt.strftime('%Y-%m-%d')
-    except ValueError:
-        return 'Fecha inválida'
+def extraer_anio_release(fecha):
+    '''
+    Extrae el año de una fecha en formato 'yyyy-mm-dd' y maneja valores nulos.
+
+    Esta función toma como entrada una fecha en formato 'yyyy-mm-dd' y devuelve el año de la fecha si
+    el dato es válido. Si la fecha es nula o inconsistente, devuelve 'Dato no disponible'.
+
+    Parameteros:
+        fecha (str or float or None): La fecha en formato 'yyyy-mm-dd'.
+
+    Retorna:
+        str: El año de la fecha si es válido, 'Dato no disponible' si es nula o el formato es incorrecto.
+    '''
+    if pd.notna(fecha):
+        if re.match(r'^\d{4}-\d{2}-\d{2}$', fecha):
+            return fecha.split('-')[0]
+    return '0000'
+
+
+def filtrar_valores_letras(values):
+    return [value for value in values if isinstance(value, str)]
