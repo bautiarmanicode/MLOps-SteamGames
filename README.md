@@ -42,7 +42,7 @@ La API ofrece la funcionalidad para obtener la informacion de los siguientes 5 e
    📂 Requiere los datos de:
 
    - 📂 steam_games.json: developer, release_date, price
-2. 🌐 `userdata(User_id:str):`:
+2. 🌐 `userdata(User_id:str):`
 
    Dinero gastado por el usuario, porcentaje de recomendación y cantidad de items.
    📂 Requiere los datos de:
@@ -76,10 +76,9 @@ La API ofrece la funcionalidad para obtener la informacion de los siguientes 5 e
 #### **📦 Extraccio**n de datos
 
 - La fuente de datos para este proyecto fueron 3 **📂 archivos JSON** comprimidos en gz
-
 - Puedes ver el **diccionario de datos** de estos archivos tocando [aquí](https://github.com/Angiea18/1-proyecto-individual-MLOps/blob/main/steam_games_ML.ipynb).
 
-#### 🔄 **Transformacion de los datos**
+##### 🔄 **Transformacion de los datos**
 
 Preparamos los dataset de Steam para la correcta lectura:
 
@@ -100,12 +99,9 @@ Se pueden visualizar las transformaciones y los análisis realizados en el proce
 
 ## Feature Engineering
 
-
-
 ## 🌐Deployment API RESTful
 
 - 🌐 El código para ejecutar la API en FastAPI **ACA** .
-
 - 🌐 Explora la API **ACA** 😃
 
 ### 🛠️ Una vez que toda la data limpia es consumible por la API:
@@ -134,9 +130,6 @@ Realizamos visualizaciones utilizando las librerías seaborn y matplotlib para c
 - descubrir patrones interesantes que puedan ser dignos de exploración en análisis futuros. 📊🔍
 - nubes de palabras
 
-**🛠️Feature engineering**
-
-- 📂 user_reviews.json: La columna "sentiment_analysis" se ha creado para las reseñas de los usuarios aplicando análisis de sentimiento con NLP en el dataset
 
 #### Opcion 1
 
