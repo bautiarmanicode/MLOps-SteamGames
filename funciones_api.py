@@ -96,9 +96,8 @@ def developer(desarrollador: str):
 
     return result
 # ________________________________________________________
-# 
+#
 
-#.to_dict(orient="records")
 
 
 

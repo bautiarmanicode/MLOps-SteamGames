@@ -16,6 +16,16 @@
 12. ~~url: URL de publicación del contenido~~
 13. ~~publisher: Empresa publicadora del contenido~~
 
+## user_items
+
+* user_id: identificador unico de usuario
+* user_url: URL perfil del usuario
+* items: items de usuario en formato Json que contiene anidados:
+  * item_id
+  * item_name
+  * playtime_forever
+  * playtime_2weeks
+
 ## user_reviews
 
 1. user_id: identificador unico de usuario
@@ -25,11 +35,3 @@
    2. .
    3. .
    4. .
-
-    
-
-# user_items
-
-user_id: identificador unico de usuario
-user_url: URL perfil del usuario
-items: items de usuario en formato Json

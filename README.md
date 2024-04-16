@@ -30,7 +30,37 @@ En general se explican como**“A usuarios que son similares a tí también les 
 <img src="https://github.com/HX-PRomero/PI_ML_OPS/raw/main/src/DiagramaConceptualDelFlujoDeProcesos.png"  height=400>
 </p>
 
-## 🌐 API RESTful
+## 🛠️Data Engineer - ETL
+
+### **🛠️ ETL (📦 Extract, 🔄 Transform, 📤 Load)**
+
+#### **📦 Extraccio**n de datos
+
+- La fuente de datos para este proyecto fueron 3 **📂 archivos JSON** comprimidos en gz
+- Puedes ver el **diccionario de datos** de estos archivos tocando [aquí](https://github.com/bautiarmanicode/MachineLearning/blob/main/Diccionario_de_datos.md).
+
+##### 🔄 **Transformacion de los datos**
+
+Preparamos los dataset de Steam para la correcta lectura:
+
+- Eliminados columnas irrelevantes para optimizar el rendimiento de la API.
+- Eliminados datos faltantes o nulos
+- Eliminados registros o filas repetidas
+- Transformaciones en los tipos de datos.
+
+#### **📤 Load - cargar**
+
+📁 Exportamos los archivos en formato parquet por su **peso, eficiencia en la lectura o escritura de datos y acelerando **las consultas.****
+
+Se pueden visualizar las transformaciones y los análisis realizados en el proceso 🛠️ ETL en los siguientes links:
+
+* [🛠️ ETL 📂 steam_games.json](https://github.com/bautiarmanicode/MLOps-SteamGames/blob/main/1_JupyterNotebooks/1.1_ETL_steam_games.ipynb)
+* [🛠️ ETL 📂 users_items.json](https://github.com/bautiarmanicode/MachineLearning/blob/main/1_JupyterNotebooks/1.2_ETL_user_items.ipynb)
+* [🛠️ ETL 📂 user_reviews.json](https://github.com/bautiarmanicode/MachineLearning/blob/main/1_JupyterNotebooks/1.3_ETL_user_reviews.ipynb)
+
+## Feature Engineering
+
+## 🌐 Desarrollo de API RESTful Render
 
 El sistema se implementa como una **API** a traves del Framework **FastAPI** , lo que permite a los usuarios interactuar con el modelo a través de solicitudes HTTP.
 
@@ -38,7 +68,7 @@ La API ofrece la funcionalidad para obtener la informacion de los siguientes 5 e
 
 1. 🌐 `developer(desarrollador:str)`:
 
-   Devuelve la cantidad de ¿items? y porcentaje de contenido Free por año según empresa desarrolladora
+   Devuelve la cantidad de juegos y porcentaje de contenido Free por año según empresa desarrolladora
    📂 Requiere los datos de:
 
    - 📂 steam_games.json: developer, release_date, price
@@ -69,40 +99,39 @@ La API ofrece la funcionalidad para obtener la informacion de los siguientes 5 e
    1. 📂 steam_games.json: developer, release_date, price.
    2. 📂 user_reviews.json: item_id, sentiment_analysis
 
-## 🛠️Data Engineer - ETL
+- 🌐 El desarrollo del codigo para estas funciones se encuentra en [2_FeatureEngineering_Funciones_Api.ipynb](https://github.com/bautiarmanicode/MLOps-SteamGames/blob/main/1_JupyterNotebooks/2_FeatureEngineering_Funciones_Api.ipynb) .
+- El codigo para generar la api se encuentra en [main.py](https://github.com/bautiarmanicode/MLOps-SteamGames/blob/main/main.py)
+- Las funciones de la api se encuentran desarrolladas en [funciones_api.py](https://github.com/bautiarmanicode/MLOps-SteamGames/blob/main/funciones_api.py)
 
-### **🛠️ ETL (📦 Extract, 🔄 Transform, 📤 Load)**
+#### **Pasos para ejecutar la api desde localHost:**
 
-#### **📦 Extraccio**n de datos
+1. 📥 **Clonar el Proyecto:** Usa `git clone https://github.com/` para descargar el proyecto.
+2. 🛠️ **Preparar el Entorno de Trabajo:**
+   * Crea un entorno virtual con `Python -m venv venv`.
+   * Activa el entorno con `venv\Scripts\activate`.
+   * Instala las dependencias con `pip install -r requirements.txt`.
+3. ▶️ **Ejecutar el Servidor:**
+   * Inicia el servidor ejecutando `uvicorn main:app --reload` desde la consola.
+4. 🌐 **Acceder al Servidor:**
+   * Haz clic en la dirección mostrada en la consola ([http://XXX.X.X.X:XXXX](http://xxx.x.x.x:XXXX/)).
+5. 📄 **Explorar la Documentación:**
+   * Agrega `/docs` en el navegador para acceder a ReDoc y explorar la documentación.
+6. 🛠️ **Probar las Funciones:**
+   * En cada función, haz clic en  *Try it out* , ingresa los datos necesarios o usa los ejemplos predeterminados, y luego ejecuta y observa la respuesta.
 
-- La fuente de datos para este proyecto fueron 3 **📂 archivos JSON** comprimidos en gz
-- Puedes ver el **diccionario de datos** de estos archivos tocando [aquí](https://github.com/Angiea18/1-proyecto-individual-MLOps/blob/main/steam_games_ML.ipynb).
+### 🌐 Deployment en Render
 
-##### 🔄 **Transformacion de los datos**
+Render: (nube unificada para aplicaciones y sitios web)
 
-Preparamos los dataset de Steam para la correcta lectura:
+**Objetivo:** Despliegue automático desde GitHub
 
-- Eliminados columnas irrelevantes para optimizar el rendimiento de la API.
-- Eliminados datos faltantes o nulos
-- Eliminados registros o filas repetidas
-- Transformaciones en los tipos de datos.
+1. Creamos un nuevo servicio en Render, conectado a este repositorio.
+2. Conectamos Render con nuestro repositorio de GitHub.
+3. Nuestro servicio está corriendo en: [Deployment Render](https://machinelearning-xb5s.onrender.com)
 
-#### **📤 Load - cargar**
+**Detalles adicionales:**
 
-📁 Exportamos los archivos en formato parquet por su **peso, eficiencia en la lectura o escritura de datos y acelerando **las consultas.****
-
-Se pueden visualizar las transformaciones y los análisis realizados en el proceso 🛠️ ETL en los siguientes links:
-
-* 🛠️ ETL 📂 **steam_games.json**: ([aquí](https://github.com/Angiea18/1-proyecto-individual-MLOps/blob/main/steam_games_ML.ipynb))
-* 🛠️ ETL 📂 **users_items.json**: ([aquí](https://github.com/Angiea18/1-proyecto-individual-MLOps/blob/main/steam_games_ML.ipynb))
-* 🛠️ ETL 📂 **user_reviews.json: ([aquí](https://github.com/Angiea18/1-proyecto-individual-MLOps/blob/main/steam_games_ML.ipynb))**
-
-## Feature Engineering
-
-## 🌐Deployment API RESTful
-
-- 🌐 El código para ejecutar la API en FastAPI **ACA** .
-- 🌐 Explora la API **ACA** 😃
+* Para ahorrar espacio en el plan gratuito de Render, utilizamos un repositorio exclusivo para el despliegue (aquí [Github Deployment Render](https://github.com/bautiarmanicode/MachineLearningRENDERDEPLOY)).
 
 ### 🛠️ Una vez que toda la data limpia es consumible por la API:
 
@@ -129,7 +158,6 @@ Realizamos visualizaciones utilizando las librerías seaborn y matplotlib para c
 - identificar posibles valores atípicos o anomalías
 - descubrir patrones interesantes que puedan ser dignos de exploración en análisis futuros. 📊🔍
 - nubes de palabras
-
 
 #### Opcion 1
 
