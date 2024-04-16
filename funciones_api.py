@@ -3,8 +3,6 @@
 # Importaciones
 import pandas as pd
 import gc
-import time 
-import operator
 
 
 #Asigmanos el parquet a distintos df con los que vamos a trabajar
