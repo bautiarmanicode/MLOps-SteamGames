@@ -12,11 +12,9 @@ import os
 def data_type_check(df):
     # Create a dictionary to store the data summary
     dataframe = {"columna": [], "%_no_nulos": [], "%_nulos": [], "total_nulos": [], "tipo_dato": []}
-    # Conseguir el nombre del df
-    nombre_df = [nombre for nombre, var in inspect.currentframe().f_back.f_locals.items() if var is df][0]
     # Header
     print("\n" + "=" * 40)
-    print(f" Resumen del dataframe '{nombre_df}': ")
+    print(" Resumen del dataframe:")
     print("\n" + "=" * 40)
     for columna in df.columns:
         # Calcular el porcentaje de no nulos
@@ -35,14 +33,7 @@ def data_type_check(df):
     print(df_info)    
 
     
-def verifica_duplicados(df, columna):    
-    # Filter duplicated rows
-    duplicated_rows = df[df.duplicated(subset=columna, keep=False)]  
-    if duplicated_rows.empty:
-        return "No hay duplicados"    
-    # Sort duplicated rows for easy comparison
-    duplicated_rows_sorted = duplicated_rows.sort_values(by=columna)
-    return duplicated_rows_sorted
+
 
 def analisis_sentimiento(review):
     
@@ -77,21 +68,8 @@ def duplicados_columna(df, columna):
     return duplicated_rows_sorted
 
 
-
-def extraer_anio_release(fecha):
-    if pd.notna(fecha):
-        if re.match(r'^\d{4}-\d{2}-\d{2}$', fecha):
-            return fecha.split('-')[0]
-    return '0000'
-
-
 def filtrar_valores_letras(values):
     return [value for value in values if isinstance(value, str)]
-
-
-
-
-
 
 
 def descomprimir_archivos_gz(archivos_gz, carpeta_destino):
@@ -103,14 +81,6 @@ def descomprimir_archivos_gz(archivos_gz, carpeta_destino):
                 f_out.write(contenido)
         print(f'Archivo descomprimido: {archivo_destino}')
 
-
-
-
-
-
-
-
-## Seguir mejorando funcion
     
 def data_type_check_EDA(df):
     # Crear un diccionario para almacenar el resumen de los datos
